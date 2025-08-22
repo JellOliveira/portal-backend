@@ -21,22 +21,6 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-// --- SERVIR O FRONTEND ---
-// Aponta o Express para a pasta 'dist' que o Vite cria
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
-// -------------------------
-
-// --- ROTAS DA API ---
-// (Todo o seu código de /api/login, /api/logout, authMiddleware, etc. vai aqui)
-// ...
-
-// --- ROTA "CATCH-ALL" ---
-// Esta deve ser a ÚLTIMA rota. Se nenhuma rota de API corresponder,
-// ela serve o index.html principal, permitindo que o React assuma o roteamento.
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
-});
-
 // 6. Iniciar o servidor
 app.listen(PORT, () => {
   console.log(`Servidor de API rodando em http://localhost:${PORT}`);
